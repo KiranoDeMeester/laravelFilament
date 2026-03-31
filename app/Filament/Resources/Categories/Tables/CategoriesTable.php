@@ -5,6 +5,8 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Filament\Actions\DeleteAction
+    ;
 class CategoriesTable
 {
     public static function configure(Table $table): Table
@@ -12,8 +14,9 @@ class CategoriesTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->label('Naam')
-                    ->searchable()->sortable(),
+                    ->searchable()
+                    ->sortable()
+                ,
                 TextColumn::make('created_at')
                     ->label('Aangemaakt op')
                     ->dateTime('d/m/Y H:i')
@@ -24,12 +27,14 @@ class CategoriesTable
             ])
             ->recordActions([
                 EditAction::make(),
+                DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
             ]);
+
     }
 }
 

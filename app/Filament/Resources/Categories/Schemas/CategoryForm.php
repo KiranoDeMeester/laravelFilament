@@ -11,6 +11,8 @@ class CategoryForm
             TextInput::make('name')
                 ->label('Naam')
                 ->required()
+                ->placeholder('Bijv. Laravel, PHP, AI...')
+                ->helperText('Geef een duidelijke categorienaam')
                 ->maxLength(255),
         ]);
     }
